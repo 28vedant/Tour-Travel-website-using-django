@@ -1,0 +1,221 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Travel-X | Home{% endblock %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+{% block body %}
+<!-- Background image -->
+<style>
+  /* Add custom styles here */
+
+  .navbar {
+    margin-bottom: 0;
+  }
+  
+  .bg-image {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+    color: white;
+    height: 60vh; /* Set the height to 100% of the viewport height */
+  }
+
+  .mask {
+    background-color: rgba(0, 0, 0, 0.5);
+    width:50%;
+    height: 60%;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 10%;
+    left: 25%;
+    right: 0;
+    bottom: 0;
+  }
+
+  .welcome-text {
+    text-align: center;
+    letter-spacing: 2px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 900;
+    font-size: 3em; /* Adjust the font size as needed */
+    color: #333024;
+    line-height: 1.2; /* Adjust the line height for better readability */
+  }
+  .section1 {
+  padding: 30px 0;
+  text-align: center;
+  background-color: black;
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+}
+
+.section1 h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: white;
+  font-family: 'Times New Roman', Times, serif;
+  letter-spacing: 5px;
+}
+
+.section1 p {
+  font-size: 25px;
+  color: white;
+  margin-bottom: 5px;
+  letter-spacing: 2px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* Optional: If you want to limit the width of the content */
+
+
+
+
+
+.section2 {
+  height: auto;
+  padding: 30px 0;
+  text-align: center;
+  background-color: rgb(51, 39, 39);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+
+.section2 h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: white;
+  text-align: left 10px;
+  font-family: 'Times New Roman', Times, serif;
+  letter-spacing: 5px;
+}
+
+.section2 p {
+  font-size: 25px;
+  color: #666;
+  margin-bottom: 5px;
+  letter-spacing: 2px;
+  color: white;
+  text-align: left 5px;
+  font-family: 'Times New Roman', Times, serif;
+  letter-spacing: 5px;
+}
+
+.section2 img {
+  width: 600px;
+  height: 250px;
+}
+
+
+
+.container2 {
+    width: 40%; 
+}
+
+.section3 {
+    padding: 30px 0;
+    text-align: center;
+    background-color:black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   
+}
+
+
+.section3 h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: white;
+    text-align: left 10px;
+    font-family: 'Times New Roman', Times, serif;
+    letter-spacing: 5px;
+}
+
+.section3 p {
+    font-size: 25px;
+    color: #666;
+    margin-bottom: 5px;
+    letter-spacing: 2px;
+    color: white;
+    text-align: left 10px;
+    font-family: 'Times New Roman', Times, serif;
+    letter-spacing: 5px;
+}
+
+
+
+.section3 img {
+    width: 500px;
+    height: 500px;
+   
+}
+
+</style>
+<title>Travel-X</title>
+</head>
+<body>
+
+<!-- Navbar -->
+
+<!-- Welcome Section -->
+<div class="p-4 text-center bg-image" style="background-image: url('{% static 'images/header.jpg' %}')">
+  <div class="mask">
+    <div class="d-flex justify-content-center align-items-center h-100">
+      <div class="text-white welcome-text">
+        <h1 class="mb-3">Welcome To Travel-X</h1>
+        <h4 class="mb-3">Explore our services and discover amazing experiences.</h4>
+        
+        {% if user.is_authenticated %}
+        <button> <a href="{% url 'main' %}" class="btn btn-outline-dark btn-lg" >Book Your Trip</a></button>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<section class="section1" id="south-india-retreat">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center"> <!-- Added text-center class here -->
+        <h2>Our Package</h2>
+        <p>
+          Golden Triangle Exploration, Serene South India Retreat, Himalayan Adventure Expedition, Golden Temple Tours, and many more........
+        </p>
+        
+      </div>
+     
+    </div>
+  </div>
+</section>
+
+<section class="section1" id="south-india-retreat">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center"> <!-- Added text-center class here -->
+        <h2>About Us</h2>
+        <p>
+          Welcome to Travel-X, where the journey is as important as the destination. We are a passionate team of travel enthusiasts dedicated to creating memorable and transformative experiences for every explorer.
+
+        </p>
+        
+      </div>
+     
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Background image -->
+{% endblock %}

@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% block title %}Travel-X | Booking{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<style>
+    /* body {
+        background: hsla(305, 65%, 85%, 1);
+        background: linear-gradient(90deg, hsla(305, 65%, 85%, 1) 0%, hsla(293, 93%, 68%, 1) 100%);
+        background: -moz-linear-gradient(90deg, hsla(305, 65%, 85%, 1) 0%, hsla(293, 93%, 68%, 1) 100%);
+        background: -webkit-linear-gradient(90deg, hsla(305, 65%, 85%, 1) 0%, hsla(293, 93%, 68%, 1) 100%);
+        filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#F2C2EE", endColorstr="#E763F9", GradientType=1 );
+    } */
+
+    .card:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease-in-out;
+    }
+
+    .filter-category:hover {
+        background-color: #c0c0c0;
+        color: #fff;
+    }
+
+    .payment-section {
+        background-color: grey;
+        padding: 15px;
+        margin-top: 15px;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <!-- Booking Details -->
+        <div class="col-md-9" style="background-image: linear-gradient(58.2deg, rgba(40,91,212,0.73) -3%, rgba(171,53,163,0.45) 49.3%, rgba(255,204,112,0.37) 97.7%);">
+            <div class="row">
+                <h5 class="bg-danger text-white p-2">Customer Details</h5>
+      <br>
+      <div class="col-md-6" style="background-color: yellow;">
+      {% if user.is_authenticated %}
+      <p><b>Name:</b>&nbsp; {{user.username}}</p>
+      <p><b>Mobile:</b>&nbsp; 9847493489</p>
+      <p><b>Email:</b>&nbsp; {{user.email}}</p>
+      <br>
+      {% else %}
+      <p><b>Name:</b>&nbsp; Anonymous</p>
+      <p><b>Mobile:</b>&nbsp; 9847493489</p>
+      <p><b>Email:</b>&nbsp; a@gmail.com</p>
+      {% endif %}
+      </div>
+                {% for x in allcart %}
+                <div class="col-md-4 mt-2">
+                    <div class="card" style="width: 22rem;">
+                        <img src="{{x.pid.pimage.url}}" class="card-img-top" alt="..." width="100px" height="200px">
+                        <div class="card-body">
+                            <h5 class="card-title">{{x.pid.pname}}</h5>
+                            <p class="card-text">{{x.pid.category}}</p>
+                            <p class="card-text">{{x.pid.pdescription}}</p>
+                            <p class="card-text"><strong>Date:</strong> {{x.date_added|date:"F d, Y"}}</p>
+
+                            <p class="card-text">Rs.{{x.pid.pprice}}</p>
+                            <strong> NO OF PEOPLE:                </strong><br>
+                            <a href="/updateqty/0/{{x.pid.pid}}"><button class="btn btn-danger">-</button></a>
+                            <input type="number" value="{{x.qty}}">
+                            <a href="/updateqty/1/{{x.pid.pid}}"><button class="btn btn-success">+</button></a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <!-- carts end here-->
+
+        <!-- right side section start here-->
+        <div class="col-md-3 " style="background-color: white;">
+          <h5 class="bg-danger text-white">Total Amount Section</h5>
+          <p><strong>Total Items:</strong>{{totalitem}}</p>
+          <hr>
+          <p><strong>Total Amount:</strong> Rs.{{totalamount}} </p>
+          <a href="{% url 'payment' %}"><button class="btn btn-danger" id="rzp-button1">Make Payment</button></a>
+          
+          
+        </div>
+        <!-- right side section end here-->
+    </div>
+</div>
+
+
+
+    </div>
+</div>
+
+{% endblock %}

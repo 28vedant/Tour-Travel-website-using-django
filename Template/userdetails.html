@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Shopee|RegisterProduct{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="row">
+        <center>
+            <h2>My Products</h2>
+            <table class="table table-bordered">
+                <tr>
+                    <th>Sr.No</th>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Password</th>
+                   
+                </tr>
+                <tr>
+                    {% for x in users %}
+                    <td>{{forloop.counter}}</td>
+                    <td>{{x.uname}}</td>
+                    <td>{{x.upass}}</td>
+                 
+                    
+                    {% endfor %}
+                </tr>
+            </table>
+        </center>
+    </div>
+    </div>
+{% endblock %}

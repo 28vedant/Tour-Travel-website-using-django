@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block title %}Travel-X | Home{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<style>
+    /* body {
+background: hsla(305, 65%, 85%, 1);
+
+background: linear-gradient(90deg, hsla(305, 65%, 85%, 1) 0%, hsla(293, 93%, 68%, 1) 100%);
+
+background: -moz-linear-gradient(90deg, hsla(305, 65%, 85%, 1) 0%, hsla(293, 93%, 68%, 1) 100%);
+
+background: -webkit-linear-gradient(90deg, hsla(305, 65%, 85%, 1) 0%, hsla(293, 93%, 68%, 1) 100%); */
+
+filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#F2C2EE", endColorstr="#E763F9", GradientType=1 );    }
+    .card:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease-in-out;
+    }
+    .filter-category:hover {
+        background-color: #c0c0c0; /* Change to the desired background color */
+        color: #fff; /* Change to the desired text color */
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <!-- Start of Cart -->
+        <div class="col-md-9" style="background-image: linear-gradient( 58.2deg,  rgba(40,91,212,0.73) -3%, rgba(171,53,163,0.45) 49.3%, rgba(255,204,112,0.37) 97.7% );">
+            <div class="row">
+                {% for x in allpakages %}
+                <div class="col-md-4 mt-3">
+                    <div class="card border-primary bg-white h-100">
+                        <img src="{{ x.pimage.url }}" class="card-img-top" alt="..." height="200px">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">{{ x.pname }}</h5>
+                            <p class="card-text text-dark" style="max-height: 75px; overflow: hidden;">{{ x.pdescription }}</p>
+                        </div>
+                        <div class="card-footer">
+                            <p class="card-text text-danger">Rs.{{ x.pprice }}</p>
+                            <a href=" /addtocart/{{x.pid}}" class="btn btn-primary">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <!-- End of Cart -->
+
+        <!-- Start of searching sidebar -->
+        
+        <div class="filter-category col-md-3" style="background-color: white;">
+            <h5 class="text-dark">Filter by Category</h5>
+            <hr>
+            <p><a href="{% url 'india' %}" class="text-decoration-none text-dark">India</a></p>
+            <p><a href="{% url 'europe' %}" class="text-decoration-none text-dark">Europe</a></p>
+            <p><a href="{% url 'thailand' %}" class="text-decoration-none text-dark">Thailand</a></p>
+            <p><a href="{% url 'malaysia' %}" class="text-decoration-none text-dark">Malaysia</a></p>
+        </div>
+        <!-- End of search sidebar -->
+    </div>
+</div>
+
+{% endblock %}

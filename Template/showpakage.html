@@ -1,0 +1,50 @@
+{% extends 'baseadmin.html' %}
+{% block title %}Travel-X|show pakage{% endblock %}
+{% block body %}
+<style>
+    h2{
+        text-align: center;
+        letter-spacing: 2px;
+    }
+    table.table thead th {
+        background-color: black;
+        color: white;  /* Set text color to white or any other color that suits your design */
+        text-align: center;
+        
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <h2>My Packages</h2>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Sr.No</th>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Photo</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for x in mypakages %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{x.pid}}</td>
+                    <td>{{x.pname}}</td>
+                    <td>{{x.category}}</td>
+                    <td>{{x.pdescription}}</td>
+                    <td>{{x.pprice}}</td>
+                    <td>
+                        <img src="{{x.pimage.url}}" alt="{{x.pname}}" width="80px" height="90px">
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

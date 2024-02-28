@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}Travel-X | Your Booking{% endblock %}
+{% block body %}
+<style>
+    .table-hover tbody tr:hover {
+        background-color: #f8f9fa; /* Light gray for row hover */
+    }
+
+    .table-bordered th,
+    .table-bordered td {
+        border: 1px solid #dee2e6; /* Border color for cells */
+    }
+
+    .table thead th {
+        background-color: #343a40; /* Dark background for table header */
+        color: #fff; /* White text for table header */
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <table class="table table-bordered table-hover mt-4">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Sr.No</th>
+                    <th scope="col">OrderID</th>
+                    <th scope="col">Package Name</th>
+                    <th scope="col">No of People</th>
+                    <th scope="col">Total Amount Paid</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for x in orderdata %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ x.orderid }}</td>
+                    <td>{{ x.pid.pname }}</td>
+                    <td>{{ x.qty }}</td>
+                    <td>{{ totalamount }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
